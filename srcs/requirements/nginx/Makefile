@@ -3,7 +3,7 @@ all:
 	docker build -t nginx_image .
 
 run:
-	docker run --env-file ../../../.env -p 8080:443 --name image_name nginx_image
+	docker run --env-file ../../../.env -p 443:443 --name image_name nginx_image
 
 exec:
 	docker exec -it image_name bash
@@ -18,3 +18,4 @@ re: clean fclean all run
 
 
 #run the container in interactive mode : docker run -it nginx_image bash
+# https::localhost:443

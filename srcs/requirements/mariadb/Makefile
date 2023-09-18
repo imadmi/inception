@@ -1,12 +1,15 @@
 all:
-	# docker build --no-cache -t  mariadb_image .
-	docker build -t mariadb_image .
+	# docker build --no-cache -t  mariadb_imag .
+	docker build -t mariadb_imag .
+
+rund:
+	docker run --env-file ../../../.env -d -p 3306:3306 --name new_container_name mariadb_imag
 
 run:
-	docker run --env-file ../../../.env -p 8080:443 --name image_name mariadb_image
+	docker run --env-file ../../../.env -p 3306:3306 mariadb_imag
 
 exec:
-	docker exec -it image_name bash
+	docker exec -it new_container_name bash
 
 clean:
 	docker rm -f $$(docker ps -aq)
@@ -14,7 +17,7 @@ clean:
 fclean: clean
 	docker rmi $$(docker images -q)
 
-re: clean fclean all run
+re: clean fclean all rund exec
 
 
-#run the container in interactive mode : docker run -it mariadb_image bash
+#run the container in interactive mode : docker run -it mariadb_imag bash
