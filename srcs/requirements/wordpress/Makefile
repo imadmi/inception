@@ -3,10 +3,10 @@ all:
 	docker build -t wordpress_imag .
 
 rund:
-	docker run --env-file ../../../.env -d -p 9000:9000 --name container_name wordpress_imag
+	docker run --env-file ../../.env -d -p 9000:9000 --name container_name wordpress_imag
 
 run:
-	docker run --env-file ../../../.env -p 9000:9000 wordpress_imag
+	docker run --env-file ../../.env -p 9000:9000 wordpress_imag
 
 exec:
 	docker exec -it container_name bash
