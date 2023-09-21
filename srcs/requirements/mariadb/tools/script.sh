@@ -1,7 +1,7 @@
 #!/bin/bash
 
 service mariadb start 
-sleep 2
+sleep 4
 
 # env variables
 MARIADB_ROOT_PASSWORD=123456789abc
