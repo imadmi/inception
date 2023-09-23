@@ -59,9 +59,3 @@ volumes:
       o: bind
       type: none
       device: /home/imad/imimouni/data/db
-
-
-
-# device: /Users/imimouni/data/db
-# device: /Users/imimouni/data/wp
-    
