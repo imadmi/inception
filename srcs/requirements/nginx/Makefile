@@ -18,4 +18,3 @@ re: clean fclean all run
 
 
 #run the container in interactive mode : docker run -it nginx_image bash
-# https::localhost:443

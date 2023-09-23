@@ -14,7 +14,8 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
     cd /var/www/html
     sed -i "s/username_here/$MARIADB_USER/g" wp-config-sample.php
 	sed -i "s/password_here/$MARIADB_PASSWORD/g" wp-config-sample.php
-	sed -i "s/localhost/$MARIADB_HOST/g" wp-config-sample.php
+	# sed -i "s/localhost/$MARIADB_HOST/g" wp-config-sample.php
+	sed -i "s/imimouni.42.fr/$MARIADB_HOST/g" wp-config-sample.php
 	sed -i "s/database_name_here/$MARIADB_NAME/g" wp-config-sample.php
 	cp wp-config-sample.php wp-config.php
     wp config create --dbname=$MARIADB_NAME --dbuser=$MARIADB_USER --dbpass=$MARIADB_PASSWORD --dbhost=$MARIADB_HOST --path="/var/www/html" --allow-root
