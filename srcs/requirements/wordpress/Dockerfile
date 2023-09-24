@@ -6,7 +6,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 
-COPY ./tools/script.sh .
+COPY ./conf/script.sh .
 
 RUN chmod 777 /script.sh
 

@@ -11,8 +11,8 @@ services:
       - .env
     networks:
       - inception_network
-    # volumes:
-    #   - wdp_data:/var/www/html
+    volumes:
+      - wdp_data:/var/www/html
     depends_on:
       - wordpress
     restart: always
@@ -24,8 +24,8 @@ services:
       - .env
     networks:
       - inception_network
-    # volumes:
-    #   - db_data:/var/lib/mysql
+    volumes:
+      - db_data:/var/lib/mysql
     restart: always
 
   wordpress:
@@ -36,8 +36,8 @@ services:
       - .env
     networks:
       - inception_network
-    # volumes:
-    #   - wdp_data:/var/www/html
+    volumes:
+      - wdp_data:/var/www/html
     depends_on:
       - mariadb
     restart: always
@@ -46,16 +46,16 @@ networks:
   inception_network:
     driver: bridge
 
-# volumes:
-#   wdp_data:
-#     driver: local
-#     driver_opts:
-#       o: bind
-#       type: none
-#       device: /home/imad/imimouni/data/wp
-#   db_data:
-#     driver: local
-#     driver_opts:
-#       o: bind
-#       type: none
-#       device: /home/imad/imimouni/data/db
+volumes:
+  wdp_data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/imad/Desktop/data/wp
+  db_data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/imad/Desktop/data/db

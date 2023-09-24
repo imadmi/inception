@@ -4,7 +4,7 @@ RUN apt update && apt install mariadb-server -y
 
 RUN service mariadb start
 
-COPY ./tools/script.sh .
+COPY ./conf/script.sh .
 RUN chmod 777 ./script.sh
 
 # -i to hide the output
