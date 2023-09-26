@@ -2,8 +2,6 @@ FROM debian:11
 
 RUN apt update && apt upgrade -y && apt install mariadb-server -y 
 
-RUN service mariadb start
-
 COPY ./conf/script.sh .
 RUN chmod 777 ./script.sh
 
