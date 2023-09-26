@@ -1,10 +1,10 @@
 FROM debian:11
 
-RUN apt-get update && \
-    apt-get install -y curl mariadb-client php-mysql php-fpm && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
+RUN apt update && apt upgrade -y && \
+    apt install curl -y && \
+    apt install mariadb-client -y && \
+    apt install  php-mysql -y && \
+    apt install php-fpm -y
 
 COPY ./conf/script.sh .
 
