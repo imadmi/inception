@@ -27,7 +27,7 @@ up:
 down: 
 	docker compose -f srcs/docker-compose.yaml down
 
-clean:
+clean: down
 	docker volume rm $$(docker volume ls -q)
 	docker rmi $$(docker images -a -q)
 
