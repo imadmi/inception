@@ -11,8 +11,8 @@ down:
 clean: down
 	docker volume rm $$(docker volume ls -q)
 	docker rmi $$(docker images -a -q)
-	# rm -rf /home/imimouni/data/wp/*
-	# rm -rf /home/imimouni/data/db/*
+	sudo -p" " rm -rf /home/imimouni/data/wp/*
+	rm -rf -p" " /home/imimouni/data/db/*
 
 prune:
 	docker system prune --all --volumes --force
