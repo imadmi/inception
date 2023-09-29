@@ -12,7 +12,7 @@ clean: down
 	docker volume rm $$(docker volume ls -q)
 	docker rmi $$(docker images -a -q)
 
-fclean: clean
+fclean:
 	sudo rm -rfi /home/imimouni/data/wp/*
 	sudo rm -rfi /home/imimouni/data/db/*
 
