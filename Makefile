@@ -11,6 +11,8 @@ down:
 clean: down
 	docker volume rm $$(docker volume ls -q)
 	docker rmi $$(docker images -a -q)
+
+fclean: clean
 	sudo -p" " rm -rf /home/imimouni/data/wp/*
 	sudo -p" " rm -rf /home/imimouni/data/db/*
 
