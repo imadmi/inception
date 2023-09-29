@@ -12,7 +12,7 @@ mariadb -e "CREATE USER IF NOT EXISTS '$MARIADB_USER'@'%' IDENTIFIED BY '$MARIAD
 mariadb -e "GRANT ALL PRIVILEGES ON $MARIADB_NAME.* TO '$MARIADB_USER'@'%';"
 mariadb -e "FLUSH PRIVILEGES;"
 
-mariadb -u root -p -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MARIADB_PASSWORD';"
+mariadb -u root -p -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MARIADB_ROOT_PASSWORD';"
 
 
 sed -i  "s/127.0.0.1/0.0.0.0/g"  /etc/mysql/mariadb.conf.d/50-server.cnf  
