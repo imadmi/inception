@@ -4,6 +4,7 @@
 # Waiting for MariaDB
 while ! mariadb -h$MARIADB_HOST -u$MARIADB_USER -p$MARIADB_PASSWORD $MARIADB_NAME &>/dev/null; do
     sleep 3
+    echo "connecting to mariadb ..."
 done
 
 
