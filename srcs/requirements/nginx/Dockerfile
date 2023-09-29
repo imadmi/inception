@@ -4,7 +4,10 @@ RUN apt update &&  apt upgrade -y && apt install nginx openssl -y
 
 RUN mkdir -p /etc/nginx/ssl
 
-RUN openssl req -x509 -newkey -nodes \
+#-nodes, notre clef privée se retrouvera sans mot de passe.
+#-x509 pour préciser le type du certificat.
+
+RUN openssl req -x509 -nodes \ 
     -out /etc/nginx/ssl/cert.crt \
     -keyout /etc/nginx/ssl/cert.key \
     -subj "/C=/ST=/L=/O=/OU=/CN="
