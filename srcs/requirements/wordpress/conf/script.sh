@@ -33,5 +33,4 @@ wp user create $WP_USR1 $WP_USR1_EMAIL --role=author --user_pass=$WP_USR1_PWD --
 sed -i 's/listen = \/run\/php\/php7.4-fpm.sock/listen = 9000/g' /etc/php/7.4/fpm/pool.d/www.conf
 
 mkdir -p /run/php
-# /usr/sbin/php-fpm7.4 --nodaemonize
-/usr/sbin/php-fpm7.4
+/usr/sbin/php-fpm7.4 --nodaemonize
