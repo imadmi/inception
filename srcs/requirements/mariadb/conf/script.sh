@@ -1,8 +1,8 @@
 #!/bin/bash
 
-rm -R /var/lib/mysql/*
-mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-/etc/init.d/mysql stop
+# rm -R /var/lib/mysql/*
+# mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+# /etc/init.d/mysql stop
 
 service mariadb start 
 sleep 5
@@ -10,7 +10,6 @@ sleep 5
 mariadb -e "CREATE DATABASE IF NOT EXISTS $MARIADB_NAME;"
 mariadb -e "CREATE USER IF NOT EXISTS '$MARIADB_USER'@'%' IDENTIFIED BY '$MARIADB_PASSWORD';"
 mariadb -e "GRANT ALL PRIVILEGES ON $MARIADB_NAME.* TO '$MARIADB_USER'@'%';"
-# mariadb -u root -p -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MARIADB_PASSWORD';"
 mariadb -e "FLUSH PRIVILEGES;"
 
 mariadb -u root -p -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MARIADB_PASSWORD';"

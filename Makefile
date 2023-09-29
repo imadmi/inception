@@ -27,3 +27,7 @@ mariadb:
 
 wordpress:
 	docker exec -it wordpress bash
+
+
+
+# scp /path/to/local/.env imimouni@10.13.100.166:/path/to/remote/destination
