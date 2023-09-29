@@ -32,4 +32,4 @@ wordpress:
 
 
 
-# scp /path/to/local/.env imimouni@10.13.100.166:/path/to/remote/destination
+# scp /Users/imimouni/Desktop/.env imimouni@10.13.100.166:/home/imimouni/inception/srcs/.env

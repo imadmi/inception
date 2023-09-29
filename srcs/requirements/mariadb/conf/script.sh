@@ -1,8 +1,8 @@
 #!/bin/bash
 
-rm -R /var/lib/mysql/*
-mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-/etc/init.d/mysql stop
+# rm -R /var/lib/mysql/*
+# mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+# /etc/init.d/mysql stop
 
 service mariadb start 
 sleep 8
