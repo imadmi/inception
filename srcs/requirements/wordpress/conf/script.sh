@@ -18,8 +18,10 @@ if [ ! -f "/usr/local/bin/wp" ]; then
     wp cli update
 fi
 
-if [ ! -f "/var/www/html/wp-config.php" ]; then
+if [ ! -d "/var/www/html/" ]; then
     mkdir -p /var/www/html
+fi
+
 
     wp core download  --path="/var/www/html" --allow-root
 
@@ -32,7 +34,7 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
     wp core install --url=$DOMAIN_NAME --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL --path="/var/www/html" --allow-root
    
     wp user create $WP_USR1 $WP_USR1_EMAIL --role=author --user_pass=$WP_USR1_PWD --path="/var/www/html" --allow-root   
-fi
+
 
 sed -i 's/listen = \/run\/php\/php7.4-fpm.sock/listen = 9000/g' /etc/php/7.4/fpm/pool.d/www.conf
 
