@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# rm -R /var/lib/mysql/*
-# mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-# /etc/init.d/mysql stop
+rm -R /var/lib/mysql/*
+mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+/etc/init.d/mysql stop
 
 service mariadb start 
-sleep 5
+sleep 8
 
 mariadb -e "CREATE DATABASE IF NOT EXISTS $MARIADB_NAME;"
 mariadb -e "CREATE USER IF NOT EXISTS '$MARIADB_USER'@'%' IDENTIFIED BY '$MARIADB_PASSWORD';"
