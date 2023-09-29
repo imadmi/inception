@@ -53,12 +53,12 @@ volumes:
     driver_opts:          
       o: bind
       type: none
-      device: /Users/imimouni/data/wp
+      device: /home/imimouni/data/wp
   db_data:
     driver: local
     driver_opts:          
       o: bind
       type: none
-      device: /Users/imimouni/data/db
+      device: /home/imimouni/data/db
     
     
