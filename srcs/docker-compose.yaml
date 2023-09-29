@@ -48,13 +48,11 @@ networks:
 
 volumes:
   wdp_data:
-    driver: local
     driver_opts:
       o: bind
       type: none
       device: /home/imimouni/data/wp
   db_data:
-    driver: local
     driver_opts:
       o: bind
       type: none
