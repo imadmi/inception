@@ -8,7 +8,7 @@ services:
     env_file:
       - .env
     networks:
-      - incp_network
+      - my_bridge_network
     volumes:
       - db_data:/var/lib/mysql
     restart: always
@@ -22,7 +22,7 @@ services:
     env_file:
       - .env
     networks:
-      - incp_network
+      - my_bridge_network
     volumes:
       - wdp_data:/var/www/html
     depends_on:
@@ -36,7 +36,7 @@ services:
     env_file:
       - .env
     networks:
-      - incp_network
+      - my_bridge_network
     volumes:
       - wdp_data:/var/www/html
     depends_on:
@@ -44,19 +44,18 @@ services:
     restart: always
 
 networks:
-  incp_network:
-    driver: bridge
+  my_bridge_network:
 
 volumes:
   wdp_data:
     driver: local
-    driver_opts:          
+    driver_opts:
       o: bind
       type: none
       device: /home/imimouni/data/wp
   db_data:
     driver: local
-    driver_opts:          
+    driver_opts:
       o: bind
       type: none
       device: /home/imimouni/data/db
