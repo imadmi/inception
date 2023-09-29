@@ -1,4 +1,12 @@
 #!/bin/bash
+
+
+# Waiting for MariaDB
+while ! mariadb -h$MARIADB_HOST -u$WP_ADMIN_USR -p$WP_ADMIN_PWD $MARIADB_NAME &>/dev/null; do
+    sleep 3
+done
+
+
 if [ ! -f "/usr/local/bin/wp" ]; then
     curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar 
 
