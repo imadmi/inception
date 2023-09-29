@@ -1,6 +1,18 @@
 version: '3'
 
 services:
+  mariadb:
+    build: ./requirements/mariadb/
+    container_name: mariadb
+    image: mariadb
+    env_file:
+      - .env
+    networks:
+      - incp_network
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+
   nginx:
     build: ./requirements/nginx/
     container_name: nginx
@@ -15,17 +27,6 @@ services:
       - wdp_data:/var/www/html
     depends_on:
       - wordpress
-    restart: always
-  mariadb:
-    build: ./requirements/mariadb/
-    container_name: mariadb
-    image: mariadb
-    env_file:
-      - .env
-    networks:
-      - incp_network
-    volumes:
-      - db_data:/var/lib/mysql
     restart: always
 
   wordpress:
