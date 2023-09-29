@@ -10,7 +10,7 @@ done
 if [ ! -f "/usr/local/bin/wp" ]; then
     curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar 
 
-    sleep 10
+    sleep 1
 
     chmod 777 wp-cli.phar 
     mv wp-cli.phar /usr/local/bin/wp
