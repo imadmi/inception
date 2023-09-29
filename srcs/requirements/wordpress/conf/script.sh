@@ -1,12 +1,9 @@
 #!/bin/bash
 
-
-# Waiting for MariaDB
 while ! mariadb -h$MARIADB_HOST -u$MARIADB_USER -p$MARIADB_PASSWORD $MARIADB_NAME &>/dev/null; do
     sleep 2
     echo "connecting to mariadb ..."
 done
-
 
 if [ ! -f "/usr/local/bin/wp" ]; then
     curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar 
@@ -22,14 +19,11 @@ if [ ! -d "/var/www/html/" ]; then
     mkdir -p /var/www/html
 fi
 
-
 wp core download  --path="/var/www/html" --allow-root
-
-# chown -R www-data:www-data /var/www/html/
 
 cd /var/www/html/
 
-wp config create --dbname=$MARIADB_NAME --dbuser=$MARIADB_USER --dbpass=$MARIADB_PASSWORD --dbhost=$MARIADB_HOST --path="/var/www/html" --allow-root --skip-check
+wp config create --dbname=$MARIADB_NAME --dbuser=$MARIADB_USER --dbpass=$MARIADB_PASSWORD --dbhost=$MARIADB_HOST --path="/var/www/html" --allow-root
 
 wp core install --url=$DOMAIN_NAME --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL --path="/var/www/html" --allow-root
 
