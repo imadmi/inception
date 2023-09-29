@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while ! mariadb -h$MARIADB_HOST -u$MARIADB_USER -p$MARIADB_PASSWORD $MARIADB_NAME &>/dev/null; do
+while ! mariadb -h$MARIADB_HOST -u$MARIADB_USER -p$MARIADB_PWD $MARIADB_NAME &>/dev/null; do
     sleep 2
     echo "connecting to mariadb ..."
 done
@@ -23,11 +23,11 @@ wp core download  --path="/var/www/html" --allow-root
 
 cd /var/www/html/
 
-wp config create --dbname=$MARIADB_NAME --dbuser=$MARIADB_USER --dbpass=$MARIADB_PASSWORD --dbhost=$MARIADB_HOST --path="/var/www/html" --allow-root
+wp config create --dbname=$MARIADB_NAME --dbuser=$MARIADB_USER --dbpass=$MARIADB_PWD --dbhost=$MARIADB_HOST --path="/var/www/html" --allow-root
 
-wp core install --url=$DOMAIN_NAME --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL --path="/var/www/html" --allow-root
+wp core install --url=$DOMAIN_NAME --title=$WORDPRESS_TITLE --admin_user=$WORDPRESS_ADMIN_USR --admin_password=$WORDPRESS_ADMIN_PWD --admin_email=$WORDPRESS_ADMIN_EMAIL --path="/var/www/html" --allow-root
 
-wp user create $WP_USR1 $WP_USR1_EMAIL --role=author --user_pass=$WP_USR1_PWD --path="/var/www/html" --allow-root   
+wp user create $WORDPRESS_USR $WORDPRESS_USR_EMAIL --role=author --user_pass=$WORDPRESS_USR_PWD --path="/var/www/html" --allow-root   
 
 
 sed -i 's/listen = \/run\/php\/php7.4-fpm.sock/listen = 9000/g' /etc/php/7.4/fpm/pool.d/www.conf
