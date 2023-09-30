@@ -1,8 +1,20 @@
 #!/bin/bash
 
+timeout_duration=600
+
+start_time=$(date +%s)
+
 while ! mariadb -h$MARIADB_HOST -u$MARIADB_USER -p$MARIADB_PWD $MARIADB_NAME &>/dev/null; do
     sleep 2
     echo "connecting to mariadb ..."
+
+    current_time=$(date +%s)
+    time_passing=$((current_time - start_time))
+
+    if [ $time_passing -ge $timeout_duration ]; then
+        echo "Timeout: Connection to MariaDB took too long."
+        break
+    fi
 done
 
 if [ ! -f "/usr/local/bin/wp" ]; then
